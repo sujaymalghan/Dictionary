@@ -4,7 +4,8 @@ import axios from 'axios';
 const Dictionary = (props) => {
   
     const[arrbool,settrue]=useState(false);
-
+    const[arrbool2,settrue2]=useState(false);
+    const[arrbool3,settrue3]=useState(false);
   const [arr, setArr] = useState([]); 
 
   const [syns,setsyns] = useState([]);
@@ -49,7 +50,7 @@ const handlesynonm = async () => {
     if (newsyn.length>=0)
     {
         setsyns(newsyn)
-        settrue(true);
+        settrue2(true);
     }
      
 };
@@ -62,7 +63,7 @@ const handlexample = async () => {
     if (reshandl.length>=0)
     {
         setreschu(reshandl)
-        settrue(true);
+        settrue3(true);
     }
       
 
@@ -107,7 +108,7 @@ const handlexample = async () => {
               <h5 className="card-title">Synonyms</h5>
               <p className="card-text">Displays Synonyms after clicking on the button</p>
               <div>
-              {arrbool && (
+              {arrbool2 && (
   syns.length > 0 ? (
     <ul>
       {syns.map((def, index) => (
@@ -133,9 +134,9 @@ const handlexample = async () => {
               
               <p className="card-text">Gives the examples from the api</p>
               <div>
-      {arrbool &&
+      {arrbool3 && (
       
-      resch.length > 0 ?(
+      resch.length > 0 ? (
         <ul>
       {resch.filter((definitionObj) => definitionObj.example && definitionObj.example.length > 0).map((definitionObj, index) => (
     <li className="card-text" key={index}>{definitionObj.example}</li>
@@ -144,7 +145,8 @@ const handlexample = async () => {
         </ul>
       ) : (
         <p>No Examples in the API</p>
-      )}
+      )
+    )}
     </div>
               <button type="button" className="btn btn-outline-primary" onClick={handlexample}>
                 Example
