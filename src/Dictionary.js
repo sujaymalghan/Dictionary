@@ -36,7 +36,7 @@ const Dictionary = (props) => {
     var res = await fetchData();
     const newArr = res.data[0].meanings[0].definitions;
     console.log(newArr);
-    if (newArr.length > 0) {
+    if (newArr.length >=0) {
       setArr(newArr); 
       settrue(true);
     } 
@@ -46,7 +46,7 @@ const handlesynonm = async () => {
     var ressyn = await fetchData();
     const newsyn = ressyn.data[0].meanings[0].definitions[0].synonyms;
 
-    if (newsyn.length>0)
+    if (newsyn.length>=0)
     {
         setsyns(newsyn)
         settrue(true);
@@ -58,8 +58,8 @@ const handlexample = async () => {
     var reshandle = await fetchData();
     const reshandl = reshandle.data[0].meanings[0].definitions;
 
-    console.log(reshandl)
-    if (reshandl.length>0)
+
+    if (reshandl.length>=0)
     {
         setreschu(reshandl)
         settrue(true);
@@ -107,13 +107,17 @@ const handlexample = async () => {
               <h5 className="card-title">Synonyms</h5>
               <p className="card-text">Displays Synonyms after clicking on the button</p>
               <div>
-      {arrbool && (
-        <ul>
-          {syns.map((def, index) => (
-            <li className="card-text" key={index}>{def}</li>
-          ))}
-        </ul>
-      )}
+              {arrbool && (
+  syns.length > 0 ? (
+    <ul>
+      {syns.map((def, index) => (
+        <li className="card-text" key={index}>{def}</li>
+      ))}
+    </ul>
+  ) : (
+    <p>No Synonym in the API</p>
+  )
+)}
     </div>
               <button type="button" className="btn btn-outline-primary" onClick={handlesynonm} >
                 Synonym
@@ -129,13 +133,17 @@ const handlexample = async () => {
               
               <p className="card-text">Gives the examples from the api</p>
               <div>
-      {arrbool && (
+      {arrbool &&
+      
+      resch.length > 0 ?(
         <ul>
       {resch.filter((definitionObj) => definitionObj.example && definitionObj.example.length > 0).map((definitionObj, index) => (
     <li className="card-text" key={index}>{definitionObj.example}</li>
 ))}
 
         </ul>
+      ) : (
+        <p>No Examples in the API</p>
       )}
     </div>
               <button type="button" className="btn btn-outline-primary" onClick={handlexample}>

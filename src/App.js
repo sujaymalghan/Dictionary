@@ -23,7 +23,7 @@ function App() {
       <div className="input-group" style={{ marginTop: 100 }}>
         <input type="text" className="form-control" placeholder="Search word" onChange={handleInputChange} aria-describedby="basic-addon2" style={{ marginLeft: 300 }}></input>
         <div className="input-group-append">
-          <button className="btn btn-outline-secondary" type="button" style={{ marginRight: 500, marginLeft: 10 }} onClick={opencomponents}>Search</button>
+          <button className="btn btn-dark" type="button" style={{ marginRight: 500, marginLeft: 10 }} onClick={opencomponents}>Search</button>
         </div>
       </div>
 
