@@ -136,7 +136,7 @@ const handlexample = async () => {
               <div>
       {arrbool3 && (
       
-      resch.length > 0 ? (
+      (resch.length > 0 && resch)  ? (
         <ul>
       {resch.filter((definitionObj) => definitionObj.example && definitionObj.example.length > 0).map((definitionObj, index) => (
     <li className="card-text" key={index}>{definitionObj.example}</li>
